@@ -1,0 +1,157 @@
+1. pycharm 解码网站：lookdiv.com  打开这个网址  在框里输入密钥：lookdiv.com
+
+2. Python的运行过程，Python是通过将代码运行在解释器，由解释器转换成二进制计算机代码进行运行
+	常用的解释器，Python自带的Ppython解释器，Java编写的JPython解释器，将Python代码转化成字节码(class)进行运行，还有pypy解释器
+
+3. Python的注释： #、'''a'''、"""a"""
+
+4. python的变量类型：Python中变量会自动赋值类型，类型有：
+	number：（int/float/complex(复数类型)）
+	boolean/str(字符串)/Tuple(元组)/list(列表)/set(集合)/dictionary(字典)
+	查看某个变量的数据类型type(msg)或者：print(isinstance(msg,str))---返回TRUE/false
+
+5. keyword：查看：import keyword   keyword.kwlist查看所有的关键字
+
+6. 输入输出函数
+	输出：
+	print('aaa') print('hello','world',sep=';',end='/')： spe:是分隔符、end是结束符默认是\n换行
+	print('aaa',file='') file参数是将内容输出到某一个文件中
+
+7. 运算符
+	7.1 赋值运算符
+	python中支持变量互换的方式：
+	a, b = 5, 10
+	a, b = b, a # 此时，a=10,b=5
+	7.2 比较运算符
+	==、 !=、 >、 <、 >=、 <=
+	7.3 逻辑运算符
+	and/or/not
+	7.4 三目运算符
+	x = 2
+	y = x if x == 1 else 1
+	此时输出的y=1
+	7.5 同一运算符： is 、not is
+	a == b 比较的是内存对象中的val值
+	a is b 比较的是这两个变量是不是同一对象(既是不是指向的同一个内存)
+	【知识点】
+	    对于整数缓存问题：当保存为文件执行时，[-5,正无穷]的整数在使用is进行判断均为TRUE，
+	    因为解释器会将相同的整数存为缓存直接使用
+
+8. 循环
+	8.1 while循环
+		while i < 3:
+			print(i)
+		完成循环
+
+	8.2 for循环
+		listVal = [0, 1, 2] == range(0, 3, 1) == 从0开始，间隔1，一直到3 range(parm1, parm2, parm3) parm1=从几开始（初始标为0）/parm2=一直到几/Parm3=相隔几个
+		for i in listVal:
+			print(i)
+
+		完成循环
+		可进行嵌套循环
+		可以使用break跳出循环，使用continue跳过当前循环
+	8.3 while else && for else
+		for i in listVal:
+			print(i)
+		else:
+			print("运行结束")
+		语法意思就是，当循环正常结束时，就会执行else语句，通常适用在循环中有if判断跳出的情况，如果走了if条件，则不会输出else内容
+
+9. str字符串常用方法
+	9.1 str = 'name'，通过index查询字符串，可以是一个区间str[0:1]，可以是某一个index的字符str[1]，也可以是按照数量隔开str[0:10:2]
+	9.2 join()函数：sep.join(str),就可以把某个值，按照sep分隔符进行分割
+		exp:
+			list = ['www','baidu','com']
+			'.'.join(list)
+			输出结果就是www.baidu.com
+			name = 'hello'
+			'.'.join(name)
+			输出结果就是h.e.l.l.o
+	9.3 大小写函数
+		upper() 将值全部转化成大写
+		lower() 将值全部转化成小写
+		title() 将每个字符的首字母转化成大写
+		capitalize() 将一整个字符串首字母设置为大写
+		swapcase() 将大小写互换
+
+	9.4 字符串的查询
+		count('被检索的字符串','检索起始位置(可省略)','检索结束位置(可省略)')：用于查询某个字符串出现的次数，return int(次数)，无 返回0
+		find('被检索的字符串','检索起始位置(可省略)','检索结束位置(可省略)')：用于查询是否包含子字符串， return 出现的下边， 无 返回-1
+		index('被检索的字符串','检索起始位置(可省略)','检索结束位置(可省略)')：用于查询是否包含子字符串， return 出现的下边， 无 抛出异常
+		startswith('被检索的字符串','检索起始位置(可省略)','检索结束位置(可省略)')：查询该字符串是否以子字符串开头，return true/false
+		startswith('被检索的字符串','检索起始位置(可省略)','检索结束位置(可省略)')：查询该字符串是否以子字符串结尾，return true/false
+
+	9.5 字符串的分割
+		split('分隔符',需要分割的次数)：按照规则进行分割，如果没有参数，默认按照空格换行等进行分割，返回的是一个list
+		partition('分隔符'):返回的是将这个字符串按照分隔符进行隔开，返回的是一个Tuple
+		exp:
+			str1 = 'ILoveYouPython'
+			print(str1.partition('o'))
+		return:
+			('IL', 'o', 'veYouPython')
+	9.6 字符串的修剪
+		strip('需要修剪的内容，空则处理\r\n\t等')：将该字符串的头尾进行修剪，不修剪中间部分
+		rstrip()/lstrip():对字符串的左/右进行修剪
+		exp：
+			str1 = 'ILoveYouPython'
+			print(str1.lstrip('I'))
+		return：
+			LoveYouPython
+
+	9.7 字符串的格式化(相当于java中的string.format)
+		print('欢迎%s登录，这是您第%d次登录' % (userName, times))
+		result:欢迎lemon登录，这是您第10次登录
+
+		# format的方式1
+		print('欢迎{}登录，这是您第{}次登录,本次消费{:.2f}元,{}已经成为VIP'.format(userName, times, cost, userName))
+		# format的方式2
+		print('欢迎{name}登录，这是您第{log}次登录,本次消费{cost:.2f}元,{name}已经成为VIP'.format(name=userName, log=times, cost=cost))
+		# f-string方式/F-string方式
+		print(f'欢迎{userName}登录，这是您第{times}次登录,本次消费{cost:.2f}元,{userName}已经成为VIP')：直接使用{变量名}
+		f'string的使用：
+			f'''today is {"周六"}，我将要去{now()}'''
+			①对齐：
+				s = 3.1415926
+				f'{s:<13}'  左对齐输出
+				f'{s:>13}'  右对齐输出
+				f'{s:^13}'  居中对齐输出
+				s:<13  意思是将S变量左对齐，并且输出13位
+			②进制转化
+				f'{s:#0b} 二进制
+				f'{s:#0o} 八进制
+				f'{s:#0x} 十六进制（小写字母）进制
+				f'{s:#0X} 十六（大写字母）进制
+			③宽度与精度
+				f'{s:.2f}' 保留两位数字
+				f'{s:8.2f}' 长度为8 保留两位数字(空位在前面)
+				f'{s:08.2f}' 长度为8 保留两位数字，其余用0表示(空位在前面)
+				f'{s:8.2%}' 长度为8 保留两位数字 转化为百分进制
+				f'{s:8s}' 字符串保留8位，不足用空格表示
+				f'{s:8.3s}' 输出8位，截取三位进行输出
+				f'{s:,f}'  将数字进行按照千位符进行分割，还可以联合使用f'{s:,.2f}' 表示按照','分割千位符，并且精确到小数点两位
+			④日期类型
+				f'{s:%d} 将时间格式输出日，自动补0
+				f'{s:%m} 将时间格式输出月，自动补0
+				f'{s:%H} 时间的小事(24小时制)，自动补0
+				f'{s:%I} 将时间格式输出月，自动补0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
