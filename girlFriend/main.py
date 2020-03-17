@@ -16,13 +16,14 @@
 import os
 import exifread
 from decimal import Decimal
-from position_utils import *
+# from .pirlFriend.position_utils import *
 import requests
 import json
 import datetime
 
 
 #  pip3 install exifread
+from girlFriend.position_utils import wgs84togcj02
 
 
 class Location(object):
@@ -161,12 +162,12 @@ class Location(object):
         if format_time == today:
             return False
         else:
-            return True
+            return False
 
 
 if __name__ == '__main__':
     # 女朋友发过来的图片【原图】
-    location = Location('./picture/test.jpg')
+    location = Location('./pic/20200317135757.jpg')
 
     # 找到女朋友的地理位置
     location.run()
